@@ -42,12 +42,28 @@ set showmatch
 set hlsearch
 set incsearch
 
+" cscope
+if has("cscope") && filereadable("/usr/bin/cscope")
+   set csprg=/usr/bin/cscope
+   set csto=0
+   set cst
+   set nocsverb
+   " add any database in current directory
+   if filereadable("cscope.out")
+      cs add $PWD/cscope.out
+   " else add database pointed to by environment
+   elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
+   endif
+   set csverb
+endif
+
 " You Complete Me
 let g:ycm_warning_symbol = '>'
 let g:ycm_error_symbol = '>>'
 let g:ycm_key_invoke_completion = '<C-a>'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = 'python3'
+let g:ycm_python_binary_path = '/usr/bin/python2.7'
 let g:ycm_server_python_interpreter = 'python2.7'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_insertion = 0
@@ -67,7 +83,9 @@ set foldlevel=20
 " Color scheme
 if has("gui_running")
   set background=light
-  colorscheme solarized
 else
-  colorscheme zenburn
+  set background=dark
 endif
+
+colorscheme solarized
+"colorscheme zenburn
