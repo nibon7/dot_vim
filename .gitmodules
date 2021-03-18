@@ -1,0 +1,15 @@
+[submodule "pack/plugins/start/async.vim"]
+	path = pack/plugins/start/async.vim
+	url = https://github.com/prabirshrestha/async.vim
+[submodule "pack/plugins/start/asyncomplete.vim"]
+	path = pack/plugins/start/asyncomplete.vim
+	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "pack/plugins/start/asyncomplete-lsp.vim"]
+	path = pack/plugins/start/asyncomplete-lsp.vim
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
+[submodule "pack/plugins/start/rust.vim"]
+	path = pack/plugins/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim
+[submodule "pack/plugins/start/vim-lsp"]
+	path = pack/plugins/start/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
