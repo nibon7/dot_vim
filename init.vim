@@ -4,29 +4,29 @@ set showmatch
 set hlsearch
 set incsearch
 
-"vim-rust
+" vim-rust
 let g:rustfmt_autosave = 1
 
-"rust
-if executable('rustup')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rust-analyzer',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rust-analyzer']},
-        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
+" LSP
+lua << EOF
+local lsp = require('lspconfig')
+local servers = {'rust_analyzer', 'clangd'}
+for _, v in ipairs(servers) do
+	lsp[v].setup {on_attach = require'completion'.on_attach}
+end
+EOF
 
-"clangd
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd', '-background-index']},
-        \ 'whitelist': ['c', 'cpp', 'cxx'],
-        \ })
-endif
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"cscope
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+" cscope
 if has("cscope")
   set csprg=/usr/bin/cscope
   set csto=0
