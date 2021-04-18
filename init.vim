@@ -35,6 +35,9 @@ set_option('shortmess', shortmess)
 -- Format rust code on save
 set_var('rustfmt_autosave', 1)
 
+-- Color scheme
+require('zephyr')
+
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { 'bash', 'c', 'cpp', 'go', 'json', 'lua', 'python', 'rust', 'toml', 'yaml' },
