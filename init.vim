@@ -67,13 +67,13 @@ opts['expr'] = true
 local function replace_termcodes(s) return vim.api.nvim_replace_termcodes(s, true, true, true) end
 
 function _G.smart_tab(next)
-  if next == 1 then
+  if next then
     return vim.fn.pumvisible() ~= 0 and replace_termcodes('<C-n>') or replace_termcodes('<Tab>')
   else
     return vim.fn.pumvisible() ~= 0 and replace_termcodes('<C-p>') or replace_termcodes('<S-Tab>')
   end
 end
 
-buf_set_keymap('i', '<Tab>', 'v:lua.smart_tab(1)', opts)
-buf_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab(0)', opts)
+buf_set_keymap('i', '<Tab>', 'v:lua.smart_tab(v:true)', opts)
+buf_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab(v:false)', opts)
 EOF
