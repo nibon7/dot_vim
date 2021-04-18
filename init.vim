@@ -63,6 +63,17 @@ buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
 -- Use <Tab> and <S-Tab> to navigate through popup menu
 opts['expr'] = true
-buf_set_keymap('i', '<Tab>', 'pumvisible() ? "<C-n>" : "<Tab>"', opts)
-buf_set_keymap('i', '<S-Tab>', 'pumvisible() ? "<C-p>" : "<S-Tab>"', opts)
+
+local function replace_termcodes(s) return vim.api.nvim_replace_termcodes(s, true, true, true) end
+
+function _G.smart_tab(next)
+  if next == 1 then
+    return vim.fn.pumvisible() ~= 0 and replace_termcodes('<C-n>') or replace_termcodes('<Tab>')
+  else
+    return vim.fn.pumvisible() ~= 0 and replace_termcodes('<C-p>') or replace_termcodes('<S-Tab>')
+  end
+end
+
+buf_set_keymap('i', '<Tab>', 'v:lua.smart_tab(1)', opts)
+buf_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab(0)', opts)
 EOF
