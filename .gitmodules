@@ -7,3 +7,6 @@
 [submodule "pack/plugins/start/completion-nvim"]
 	path = pack/plugins/start/completion-nvim
 	url = https://github.com/nvim-lua/completion-nvim
+[submodule "pack/plugins/start/nvim-treesitter"]
+	path = pack/plugins/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter

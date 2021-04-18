@@ -33,12 +33,20 @@ end
 set_option('shortmess', shortmess)
 
 -- Format rust code on save
-set_var("rustfmt_autosave", 1)
+set_var('rustfmt_autosave', 1)
+
+-- Treesitter
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { 'bash', 'c', 'cpp', 'go', 'json', 'lua', 'python', 'rust', 'toml', 'yaml' },
+  highlight = {
+    enable = true
+  }
+}
 
 local lsp = require('lspconfig')
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "rust_analyzer", "clangd" }
+local servers = { 'rust_analyzer', 'clangd' }
 for _, v in ipairs(servers) do
   lsp[v].setup { on_attach=require'completion'.on_attach }
 end
