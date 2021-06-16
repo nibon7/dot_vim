@@ -35,9 +35,6 @@ set_option('shortmess', shortmess)
 -- Format rust code on save
 set_var('rustfmt_autosave', 1)
 
--- Color scheme
-require('zephyr')
-
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { 'bash', 'c', 'cpp', 'go', 'json', 'lua', 'python', 'rust', 'toml', 'yaml' },
@@ -50,6 +47,12 @@ require'nvim-treesitter.configs'.setup {
     max_file_lines = 1000,
   }
 }
+
+-- Color scheme
+require('zephyr')
+
+-- Auto pair
+require'nvim-autopairs'.setup()
 
 local lsp = require('lspconfig')
 -- Use a loop to conveniently both setup defined servers

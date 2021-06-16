@@ -16,3 +16,6 @@
 [submodule "pack/plugins/start/nvim-ts-rainbow"]
 	path = pack/plugins/start/nvim-ts-rainbow
 	url = https://github.com/p00f/nvim-ts-rainbow
+[submodule "pack/plugins/start/nvim-autopairs"]
+	path = pack/plugins/start/nvim-autopairs
+	url = https://github.com/windwp/nvim-autopairs
