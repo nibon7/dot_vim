@@ -13,3 +13,6 @@
 [submodule "pack/plugins/start/zephyr-nvim"]
 	path = pack/plugins/start/zephyr-nvim
 	url = https://github.com/glepnir/zephyr-nvim
+[submodule "pack/plugins/start/nvim-ts-rainbow"]
+	path = pack/plugins/start/nvim-ts-rainbow
+	url = https://github.com/p00f/nvim-ts-rainbow
